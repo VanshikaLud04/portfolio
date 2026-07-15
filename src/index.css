@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #F3EEE4;
+  --color-bg-alt: #EDE6D8;
+  --color-text: #241C15;
+  --color-text-muted: #6B6047;
+  --color-accent: #4A7FB5;
+  --color-accent-hover: #3A6A9A;
+  --color-olive: #6B6B4A;
+  --color-border: #D8D0C0;
+  --color-card: #FAFAF6;
+  --color-white: #FFFFFF;
+
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 200ms;
+  --dur-med: 450ms;
+  --dur-slow: 700ms;
+
+  --max-width: 1200px;
+  --section-pad: 100px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle paper texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+  border: none;
+  background: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-olive); }
+
+/* Typography helpers */
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+/* Mono label style */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-olive);
+}
+
+/* Container */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  :root { --section-pad: 60px; }
+}
+
+/* Section */
+section {
+  padding: var(--section-pad) 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 400;
+  color: var(--color-text);
+  line-height: 1.1;
+}
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-olive);
+  border: 1px solid var(--color-border);
+  padding: 4px 8px;
+  white-space: nowrap;
+}
+
+/* Accent button */
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-accent);
+  color: var(--color-white);
+  padding: 12px 24px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  border-radius: 2px;
+  transition: background var(--dur-fast) var(--ease-inout), transform var(--dur-fast) var(--ease-inout);
+}
+
+.btn-accent:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--color-text);
+  padding: 12px 24px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  border-radius: 2px;
+  border: 1px solid var(--color-border);
+  transition: border-color var(--dur-fast), transform var(--dur-fast) var(--ease-inout), background var(--dur-fast);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-text);
+  background: rgba(36, 28, 21, 0.04);
+  transform: translateY(-1px);
+}
+
+/* Divider */
+.section-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

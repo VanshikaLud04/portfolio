@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#0d0d0d"/>
+  <text
+    x="50%"
+    y="54%"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    font-family="'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif"
+    font-size="18"
+    font-weight="700"
+    letter-spacing="1"
+    fill="url(#vlgrad)"
+  >VL</text>
+  <defs>
+    <linearGradient id="vlgrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+</svg>

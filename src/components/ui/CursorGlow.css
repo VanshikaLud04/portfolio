@@ -1,0 +1,27 @@
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(167, 139, 250, 0.15) 0%,
+    rgba(96, 165, 250, 0.08) 30%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+  mix-blend-mode: screen;
+  filter: blur(40px);
+}
+
+@media (max-width: 768px) {
+  .cursor-glow { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-glow { display: none; }
+}

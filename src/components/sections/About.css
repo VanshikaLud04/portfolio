@@ -1,0 +1,130 @@
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about__bio {
+  font-size: 1.05rem;
+  color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.about__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.about__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.about__right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about__card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 24px;
+}
+
+.about__card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-olive);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about__edu-item {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about__edu-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.about__edu-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.about__edu-institution {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.about__edu-date {
+  flex-shrink: 0;
+}
+
+.about__edu-degree {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.about__edu-detail {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.about__edu-location {
+  font-size: 0.78rem;
+  color: var(--color-olive);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+.about__achievement {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about__achievement:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.about__achievement-title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.about__achievement-desc {
+  font-size: 0.825rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
