@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './navbar.css';
-import { profile } from '../../content/data';
 
 const navLinks = [
   { label: 'About', href: '#about' },

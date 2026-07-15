@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import './Contact.css';
 import { profile } from '../../content/data';
 import { GithubIcon, LinkedinIcon } from '../ui/Icons';
 import { Mail, Send, ArrowUp } from 'lucide-react';
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
   visible: (i: number) => ({
     opacity: 1, y: 0,
