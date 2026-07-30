@@ -12,23 +12,23 @@ export const profile = {
 };
 
 export const skills = [
-  { category: "Languages", items: ["Python", "C++", "C", "JavaScript", "SQL", "HTML/CSS"] },
-  { category: "Backend & DevOps", items: ["FastAPI", "Node.js", "Flask", "Celery", "RabbitMQ", "Docker", "GitHub Actions", "Linux/Unix"] },
-  { category: "Databases & State", items: ["PostgreSQL", "MongoDB", "Redis", "ChromaDB", "SQLite"] },
-  { category: "AI & Computer Vision", items: ["YOLOv8", "OpenCV", "MediaPipe", "RAG", "Hybrid Search"] },
-  { category: "Core CS", items: ["Data Structures & Algorithms", "OOP", "Operating Systems", "AsyncIO"] },
+  { category: "Software Engineering", items: ["System Design", "Distributed Systems", "Concurrency", "Event-Driven Architecture", "AsyncIO", "OOP"] },
+  { category: "AI Systems", items: ["Generative AI", "RAG", "Information Retrieval", "Hybrid Retrieval", "Computer Vision"] },
+  { category: "Backend", items: ["FastAPI", "Docker", "RabbitMQ", "Celery", "OpenTelemetry"] },
+  { category: "Databases", items: ["PostgreSQL", "Redis", "SQLite", "ChromaDB", "PGVector"] },
+  { category: "Languages", items: ["Python", "C++", "C", "JavaScript", "SQL"] },
 ];
 
 export const experience = [
   {
-    role: "Open Source Contributor",
-    org: "Cordum (AI Governance Framework)",
+    role: "Software Engineering Contributor (Open Source)",
+    org: "Cordum",
     date: "Apr 2026",
     link: { label: "Merged PR", url: "https://github.com/cordum-io/cordum-packs/pull/264" },
     bullets: [
-      "Redesigned Cordum's Safety Kernel, replacing synchronous HTTP policy checks with asynchronous job pipelines for better scalability and responsiveness.",
-      "Built the cordum-langchain-guard Python sidecar with non-blocking workflows that return control to the LLM immediately during approval-required execution states.",
-      "Integrated deterministic 403 policy denial handling and real-time execution routing; merged 26/26 passing integration tests into the mainline open-source project.",
+      "Replaced synchronous HTTP policy checks with an asynchronous job pipeline, eliminating blocking policy evaluation from the execution path.",
+      "Developed cordum-langchain-guard, a Python sidecar service implementing asynchronous approval workflows for LLM policy evaluation.",
+      "Implemented deterministic 403 policy-denial handling and real-time execution routing, contributing to a merged pull request with 26/26 passing integration tests.",
     ],
   },
   {
@@ -38,8 +38,8 @@ export const experience = [
     link: { label: "Appointment Letter", url: "https://drive.google.com/file/d/1z5axLIsBYDNrZiSYIq-uQ7fEEPqZg0AX/view?usp=sharing" },
     bullets: [
       "Developed 20+ Python/C++ simulation pipelines for ArduSub ROV/AUV testing within the ArduPilot ecosystem.",
-      "Integrated OpenCV image-processing streams to validate real-time underwater feature tracking and target detection.",
-      "Logged and analyzed video-feed latency metrics across 3 trial phases to guide compute optimization.",
+      "Integrated OpenCV-based vision modules into ArduPilot simulation pipelines for underwater feature tracking.",
+      "Validated simulation outputs through iterative experimentation with researchers from NIT Jamshedpur and IIT Guwahati, improving the reliability of underwater autonomy experiments.",
     ],
   },
 ];
@@ -48,47 +48,43 @@ export const projects = [
   {
     id: "FILE_01",
     slug: "llm-cost-guard",
-    title: "LLM-Cost-Guard",
+    title: "LLM Cost Guard",
     subtitle: "Distributed API Cost Middleware",
-    stack: ["FastAPI", "PostgreSQL", "Celery", "RabbitMQ", "Docker", "Prometheus"],
-    metrics: ["p95 110ms", "7,100+ RPS", "0.63ms Redis"],
+    stack: ["FastAPI", "PostgreSQL", "Redis", "Celery", "RabbitMQ", "Docker"],
+    metrics: ["7,100+ RPS", "Atomic Token Reservation"],
     link: "https://github.com/VanshikaLud04/llm-cost-guard",
     bullets: [
-      "FastAPI middleware enforcing LLM token budgets and rate limits to prevent uncontrolled API spend.",
-      "Distributed task-processing backend (PostgreSQL + RabbitMQ + Celery) decoupling DB I/O from the main API thread, eliminating monolithic locking bottlenecks.",
-      "Dockerized full stack with Prometheus observability; p95 latency of 110ms across 7,100+ concurrent requests in Locust load tests, 0.63ms Redis idempotency overhead.",
-      "Supports deterministic fallback chains (OpenAI → Anthropic → Groq) to ensure high uptime simulation."
+      "Built a production-style AI Gateway for centralizing policy enforcement, intelligent provider routing, and token budget management across multiple LLM providers.",
+      "Scaled request handling through asynchronous task queues (RabbitMQ/Celery), isolating latency-sensitive API paths from persistence workloads, and defined a common provider interface enabling pluggable routing across OpenAI, Anthropic, and Groq.",
+      "Guaranteed atomic token reservation before provider invocation using Redis to prevent double charging during concurrent requests, alongside integration tests validating policy enforcement under 7,100+ concurrent requests."
     ],
   },
   {
     id: "FILE_02",
-    slug: "focus-lock",
-    title: "Focus Lock",
-    subtitle: "OS-Level Productivity Tracker",
-    stack: ["Python", "YOLOv8", "MediaPipe", "Flask-SocketIO", "Redis", "OpenCV"],
-    metrics: ["97.2% Recall", "<30ms latency", "93% CPU reduction"],
-    link: "https://github.com/VanshikaLud04/focus-lock",
+    slug: "ragbench",
+    title: "RagBench",
+    subtitle: "Full-Stack RAG Platform",
+    stack: ["FastAPI", "React", "PostgreSQL", "ChromaDB", "Redis", "pgvector"],
+    metrics: ["97.6% latency drop"],
+    link: "https://github.com/VanshikaLud04/Rag-bench",
     bullets: [
-      "Daemon-architected macOS productivity tracker (OpenCV + Tkinter subprocesses) isolating ML inference from the main event loop for non-blocking full-screen lock-outs.",
-      "97.2% recall in distraction detection by fusing YOLOv8 object recognition with MediaPipe gaze tracking, <30ms end-to-end inference latency.",
-      "Adaptive sampling engine using frame-difference entropy — 93% reduction in CPU overhead during idle states.",
-      "Redis-backed idempotency caching layer (~2ms overhead) for session state integrity across aggressive UI transitions.",
-      "Features a beautiful interactive web dashboard for session tracking, task management, and live stats."
+      "Engineered a production retrieval platform combining hybrid retrieval (BM25 + dense search), Reciprocal Rank Fusion (RRF), cross-encoder reranking, and grounded generation for enterprise document search.",
+      "Built a pluggable parser registry enabling new document types to be added without modifying the ingestion pipeline, and guaranteed post-hoc citation grounding independent of LLM outputs.",
+      "Integrated evaluation pipelines measuring faithfulness and context precision, and implemented a Redis-based Semantic Caching layer reducing generation latency by 97.6% (3.5s to 85ms)."
     ],
   },
   {
     id: "FILE_03",
-    slug: "ragbench",
-    title: "RagBench",
-    subtitle: "Full-Stack RAG Platform",
-    stack: ["React", "Node.js", "FastAPI", "MongoDB", "ChromaDB"],
-    metrics: ["69.6% → 92.5% faithfulness"],
-    link: "https://github.com/VanshikaLud04/Rag-bench",
+    slug: "focus-lock",
+    title: "Focus Lock",
+    subtitle: "OS-Level Productivity Tracker",
+    stack: ["Python", "YOLOv8", "OpenCV", "MediaPipe", "Flask", "WebSockets", "SQLite"],
+    metrics: ["97.2% Recall", "<30ms latency", "93% CPU reduction"],
+    link: "https://github.com/VanshikaLud04/focus-lock",
     bullets: [
-      "Production-grade RAG Evaluation Platform for Academic Research Papers, built to benchmark multiple LLMs.",
-      "Improved generation faithfulness from 69.6% to 92.5% via Hybrid Search (dense embeddings + sparse BM25) and an automated LLM-as-a-judge retry mechanism.",
-      "Custom evaluation engine measuring Context Precision, Recall, and Answer Relevancy for both local and cloud models.",
-      "Integrated Redis Semantic Caching to bypass heavy LLM computation for similar queries, dropping latency by 97.6%."
+      "Developed a privacy-first Edge AI analytics platform performing on-device distraction detection with 97.2% recall and <30 ms inference latency.",
+      "Designed an event-driven producer-consumer pipeline separating capture, inference, telemetry, and analytics using lock-safe asynchronous queues and an in-memory EventBus.",
+      "Guaranteed non-blocking inference by isolating analytics from the critical path, and applied Shannon entropy to dynamically adapt inference frames based on motion, slashing system CPU consumption by 93%."
     ],
   },
   {
@@ -129,10 +125,14 @@ export const education = [
 export const achievements = [
   {
     title: "National Finalist, MeitY SWAYAAN Challenge",
-    description: "Selected from 285 teams for an autonomous disaster-management drone; built a YOLO-based vision pipeline achieving 85% detection accuracy.",
+    description: "Served as Core Vision Engineer; architected a YOLO-based computer vision pipeline for an autonomous drone attaining 85% detection accuracy.",
+  },
+  {
+    title: "Top 30, HackOdisha 2025",
+    description: "Ranked among the top 30 out of 441 projects for VeriChain, a blockchain-based academic credential verification platform.",
   },
   {
     title: "2nd Position, ElectroHack'25",
-    description: "Recognized for outstanding hardware-software integration.",
+    description: "Secured 2nd place among 200+ participants for designing an integrated hardware-software solution.",
   },
 ];

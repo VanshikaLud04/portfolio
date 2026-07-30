@@ -1,67 +1,54 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './Skills.css';
 import { skills } from '../../content/data';
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: i * 0.08 },
-  }),
-};
 
 const Skills: React.FC = () => {
   return (
-    <section id="skills" className="skills-section">
-      <div className="container">
-        <motion.div
-          className="section-header"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-          custom={0}
-          variants={fadeUp}
-        >
-          <span className="section-eyebrow">SKILLS //</span>
-          <h2>What I work with</h2>
-        </motion.div>
+    <section 
+      id="skills" 
+      className="min-h-screen py-32 flex flex-col justify-center relative border-t border-ink/10"
+    >
+      <div className="absolute top-8 left-0">
+        <span className="font-mono text-xs text-sage tracking-widest uppercase">02 — Building AI Systems</span>
+      </div>
 
-        <div className="skills__grid">
-          {skills.map((group, gi) => (
-            <motion.div
-              key={group.category}
-              className="skills__group"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-60px' }}
-              custom={gi}
-              variants={fadeUp}
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start"
+      >
+        <div className="lg:col-span-4">
+          <h2 className="text-4xl lg:text-6xl font-serif leading-tight text-ink">
+            The<br />Toolkit
+          </h2>
+        </div>
+        
+        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+          {skills.map((skillGroup, idx) => (
+            <motion.div 
+              key={idx} 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+              }}
+              className="relative"
             >
-              <p className="skills__category mono-label">{group.category}</p>
-              <div className="skills__tags">
-                {group.items.map((item, ii) => (
-                  <motion.span
-                    key={item}
-                    className="skills__tag"
-                    initial={{ opacity: 0, scale: 0.85 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.35,
-                      ease: [0.16, 1, 0.3, 1],
-                      delay: gi * 0.06 + ii * 0.04,
-                    }}
-                    whileHover={{ y: -2, borderColor: 'var(--color-accent)' }}
-                  >
+              <h3 className="font-mono text-sm tracking-widest uppercase text-sage mb-6 border-b border-ink/10 pb-2">
+                {skillGroup.category}
+              </h3>
+              <ul className="flex flex-wrap gap-x-6 gap-y-3">
+                {skillGroup.items.map((item, i) => (
+                  <li key={i} className="font-serif text-[19px] text-ink/90">
                     {item}
-                  </motion.span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
