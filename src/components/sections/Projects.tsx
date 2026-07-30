@@ -171,9 +171,7 @@ const Projects: React.FC = () => {
 
                 {/* Content & Diagram */}
                 <div className="lg:col-span-7">
-                  <p className="font-serif text-[19px] leading-relaxed text-ink mb-8">
-                    {project.bullets[0]}
-                  </p>
+                  <p className="font-serif text-[19px] leading-relaxed text-ink mb-8" dangerouslySetInnerHTML={{ __html: project.bullets[0] }} />
                   
                   {hasDiagram && (
                     <FlowchartDiagram slug={project.slug} />
@@ -183,7 +181,7 @@ const Projects: React.FC = () => {
                     {project.bullets.slice(1).map((bullet, i) => (
                       <li key={i} className="font-serif text-[18px] leading-relaxed text-ink/90 flex gap-4">
                         <span className="text-sage/60 mt-1.5">•</span>
-                        <span>{bullet}</span>
+                        <span dangerouslySetInnerHTML={{ __html: bullet }} />
                       </li>
                     ))}
                   </ul>

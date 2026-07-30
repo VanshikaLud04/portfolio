@@ -48,7 +48,7 @@ const Experience: React.FC = () => {
                 {exp.bullets.map((bullet, i) => (
                   <li key={i} className="font-serif text-[18px] leading-relaxed text-ink/90 flex gap-4">
                     <span className="text-sage/60 mt-1.5">•</span>
-                    <span>{bullet}</span>
+                    <span dangerouslySetInnerHTML={{ __html: bullet }} />
                   </li>
                 ))}
               </ul>
