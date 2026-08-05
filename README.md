@@ -3,8 +3,7 @@
 A sleek, animated, and performant developer portfolio showcasing my work in Backend Systems, AI/CV, and full-stack development.
 
 ## 🚀 Live Demo
-*(Add your live Vercel/Netlify link here once deployed!)*
-
+https://vanshikaludhaniportfolio.netlify.app/
 ## 🛠️ Tech Stack
 * **Framework**: React 19 + TypeScript
 * **Bundler**: Vite
