@@ -61,16 +61,17 @@ export const projects = [
   },
   {
     id: "FILE_02",
-    slug: "ragbench",
-    title: "RagBench",
-    subtitle: "Full-Stack RAG Platform",
-    stack: ["FastAPI", "React", "PostgreSQL", "ChromaDB", "Redis", "pgvector"],
-    metrics: ["97.6% latency drop"],
-    link: "https://github.com/VanshikaLud04/Rag-bench",
+    slug: "ragos",
+    title: "RAGOS",
+    subtitle: "RAG Experimentation & Optimization Platform",
+    stack: ["Python", "FastAPI", "PostgreSQL", "ChromaDB", "LiteLLM", "Docker", "AsyncIO"],
+    metrics: ["100+ configurations", "Pareto-frontier selection"],
+    link: "https://github.com/VanshikaLud04/ragos",
     bullets: [
-      "Engineered a production retrieval platform combining hybrid retrieval (BM25 + dense search), Reciprocal Rank Fusion (RRF), cross-encoder reranking, and grounded generation for enterprise document search.",
-      "Built a pluggable parser registry enabling new document types to be added without modifying the ingestion pipeline, and guaranteed post-hoc citation grounding independent of LLM outputs.",
-      "Integrated evaluation pipelines measuring faithfulness and context precision, and implemented a Redis-based Semantic Caching layer reducing generation latency by <b>97.6%</b> (3.5s to 85ms)."
+      "Built a framework-agnostic experimentation and optimization platform for Retrieval-Augmented Generation (RAG), enabling automated evaluation and optimization of retrieval pipelines under production constraints.",
+      "Implemented constraint-aware Random Search to optimize RAG pipelines (chunking, retrieval, generation) under latency and cost constraints, evaluating <b>100+</b> configurations.",
+      "Implemented async experiment orchestration with automated evaluation, LiteLLM token cost profiling, and Pareto-frontier pipeline selection.",
+      "Designed a plugin-based architecture enabling new retrievers, embedders, generators, and evaluators without modifying the core optimization engine."
     ],
   },
   {
